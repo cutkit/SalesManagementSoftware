@@ -28,8 +28,17 @@ namespace SalesManagementSoftware
                 btn.Height = 90;
                 btn.Width = 90;
                 btn.Text = item.NameTable + "\n" + item.StatusInfo;
+                btn.Tag = item;
+                btn.Click += Btn_Click;
                 flpTable.Controls.Add(btn);
             }
+        }
+
+        private void Btn_Click(object sender, EventArgs e)
+        {
+            Button button = sender as Button;
+            List<Food> foods = LoadFoodsDAO(1);
+            //throw new NotImplementedException();
         }
 
         private void thôngTinTàiKhoảnToolStripMenuItem_Click(object sender, EventArgs e)

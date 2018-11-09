@@ -1,4 +1,5 @@
 ﻿using SalesManagementSoftware.DAO;
+using SalesManagementSoftware.EntityFW;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -20,7 +21,15 @@ namespace SalesManagementSoftware
         }
         void LoadTable()
         {
-            LoadTableDAO.
+            List<TableCustomer> table= LoadTableDAO.Instance.GetTable();
+            foreach (TableCustomer item in table)
+            {
+                Button btn = new Button();
+                btn.Height = 90;
+                btn.Width = 90;
+                btn.Text = item.NameTable + "\n" + item.StatusInfo;
+                flpTable.Controls.Add(btn);
+            }
         }
 
         private void thôngTinTàiKhoảnToolStripMenuItem_Click(object sender, EventArgs e)

@@ -10,9 +10,9 @@ namespace SalesManagementSoftware.DAO
     class LoadTableDAO
     {
         SaleModel db = new SaleModel();
-        private LoadTableDAO instance;
+        private static LoadTableDAO instance;
 
-        public LoadTableDAO Instance
+        internal static LoadTableDAO Instance
         {
             get
             {

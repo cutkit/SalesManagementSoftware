@@ -218,7 +218,13 @@ namespace SalesManagementSoftware
 
         private void bntAddTable_Click(object sender, EventArgs e)
         {
+            fAddTableAdmin fAddTableAdmin = new fAddTableAdmin();
+            fAddTableAdmin.ShowDialog();
+        }
 
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+            LoadTable();
         }
     }
 }

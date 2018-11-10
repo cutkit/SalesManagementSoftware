@@ -27,10 +27,19 @@ namespace SalesManagementSoftware.DAO
         {
 
         }
-        bool AddTable()
+        public bool AddTable(string nameTable, string status)
         {
             SaleModel db = new SaleModel();
-            return true;
+            TableCustomer tableCustomer = new TableCustomer();
+            tableCustomer.NameTable = nameTable;
+            tableCustomer.StatusInfo = status;
+            TableCustomer info = db.TableCustomers.Add(tableCustomer);
+            db.SaveChanges();
+            if (info != null)
+            {
+                return true;
+            }
+            return false;
         }
     }
 }

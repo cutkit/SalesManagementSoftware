@@ -112,6 +112,7 @@
             this.panel25 = new System.Windows.Forms.Panel();
             this.txbUserNameAccount = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
+            this.btnRefresh = new System.Windows.Forms.Button();
             this.tpAdmin.SuspendLayout();
             this.tbpDoanhThu.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -653,6 +654,7 @@
             // 
             // panel14
             // 
+            this.panel14.Controls.Add(this.btnRefresh);
             this.panel14.Controls.Add(this.btnViewTable);
             this.panel14.Controls.Add(this.btnUpdateTable);
             this.panel14.Controls.Add(this.btnDeleteTable);
@@ -967,6 +969,16 @@
             this.label12.TabIndex = 0;
             this.label12.Text = "Tên Tài Khoản";
             // 
+            // btnRefresh
+            // 
+            this.btnRefresh.Location = new System.Drawing.Point(364, 4);
+            this.btnRefresh.Name = "btnRefresh";
+            this.btnRefresh.Size = new System.Drawing.Size(75, 47);
+            this.btnRefresh.TabIndex = 4;
+            this.btnRefresh.Text = "Làm Mới";
+            this.btnRefresh.UseVisualStyleBackColor = true;
+            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
+            // 
             // fSupperAdmin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1087,7 +1099,6 @@
         private System.Windows.Forms.Button btnUpdateTable;
         private System.Windows.Forms.Button btnDeleteTable;
         private System.Windows.Forms.Button bntAddTable;
-        private System.Windows.Forms.DataGridView dgvTable;
         private System.Windows.Forms.Panel panel15;
         private System.Windows.Forms.Panel panel20;
         private System.Windows.Forms.ComboBox cbTableStatus;
@@ -1117,5 +1128,7 @@
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label13;
+        public System.Windows.Forms.DataGridView dgvTable;
+        private System.Windows.Forms.Button btnRefresh;
     }
 }

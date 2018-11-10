@@ -120,7 +120,7 @@ namespace SalesManagementSoftware
             if (idBill != 0.77f)
             {
                 
-                if (AddFoodDAO.Instance.AddFood((int)idBill, idFood, count))
+                if (AddFoodDAO.Instance.AddFood(idTable,(int)idBill, idFood, count))
                 {
                     MessageBox.Show("Thêm Thành Công!!");
                 }

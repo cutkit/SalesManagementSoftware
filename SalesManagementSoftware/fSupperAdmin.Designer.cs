@@ -83,7 +83,7 @@
             this.btnUpdateTable = new System.Windows.Forms.Button();
             this.btnDeleteTable = new System.Windows.Forms.Button();
             this.bntAddTable = new System.Windows.Forms.Button();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.dgvTable = new System.Windows.Forms.DataGridView();
             this.panel15 = new System.Windows.Forms.Panel();
             this.panel20 = new System.Windows.Forms.Panel();
             this.cbTableStatus = new System.Windows.Forms.ComboBox();
@@ -137,7 +137,7 @@
             this.panel11.SuspendLayout();
             this.tbpBan.SuspendLayout();
             this.panel14.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvTable)).BeginInit();
             this.panel15.SuspendLayout();
             this.panel20.SuspendLayout();
             this.panel18.SuspendLayout();
@@ -641,7 +641,7 @@
             // tbpBan
             // 
             this.tbpBan.Controls.Add(this.panel14);
-            this.tbpBan.Controls.Add(this.dataGridView2);
+            this.tbpBan.Controls.Add(this.dgvTable);
             this.tbpBan.Controls.Add(this.panel15);
             this.tbpBan.Location = new System.Drawing.Point(4, 22);
             this.tbpBan.Name = "tbpBan";
@@ -697,15 +697,16 @@
             this.bntAddTable.TabIndex = 0;
             this.bntAddTable.Text = "Thêm";
             this.bntAddTable.UseVisualStyleBackColor = true;
+            this.bntAddTable.Click += new System.EventHandler(this.bntAddTable_Click);
             // 
-            // dataGridView2
+            // dgvTable
             // 
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Location = new System.Drawing.Point(9, 7);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.Size = new System.Drawing.Size(435, 454);
-            this.dataGridView2.TabIndex = 5;
-            this.dataGridView2.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellContentClick);
+            this.dgvTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvTable.Location = new System.Drawing.Point(8, 66);
+            this.dgvTable.Name = "dgvTable";
+            this.dgvTable.Size = new System.Drawing.Size(442, 398);
+            this.dgvTable.TabIndex = 5;
+            this.dgvTable.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellContentClick);
             // 
             // panel15
             // 
@@ -1008,7 +1009,7 @@
             this.panel11.ResumeLayout(false);
             this.tbpBan.ResumeLayout(false);
             this.panel14.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvTable)).EndInit();
             this.panel15.ResumeLayout(false);
             this.panel20.ResumeLayout(false);
             this.panel20.PerformLayout();
@@ -1086,7 +1087,7 @@
         private System.Windows.Forms.Button btnUpdateTable;
         private System.Windows.Forms.Button btnDeleteTable;
         private System.Windows.Forms.Button bntAddTable;
-        private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.DataGridView dgvTable;
         private System.Windows.Forms.Panel panel15;
         private System.Windows.Forms.Panel panel20;
         private System.Windows.Forms.ComboBox cbTableStatus;

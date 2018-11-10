@@ -35,8 +35,13 @@
             this.đăngXuấtToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel2 = new System.Windows.Forms.Panel();
             this.lsvBill = new System.Windows.Forms.ListView();
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.tbResult = new System.Windows.Forms.TextBox();
             this.cbSwitchTable = new System.Windows.Forms.ComboBox();
             this.btnSwitchTable = new System.Windows.Forms.Button();
             this.nmDisCount = new System.Windows.Forms.NumericUpDown();
@@ -48,11 +53,6 @@
             this.cbFood = new System.Windows.Forms.ComboBox();
             this.cbCategory = new System.Windows.Forms.ComboBox();
             this.flpTable = new System.Windows.Forms.FlowLayoutPanel();
-            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.tbResult = new System.Windows.Forms.TextBox();
             this.menuStrip1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -127,6 +127,29 @@
             this.lsvBill.View = System.Windows.Forms.View.Details;
             this.lsvBill.SelectedIndexChanged += new System.EventHandler(this.lsvBill_SelectedIndexChanged);
             // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Text = "Tên Thức Ăn";
+            this.columnHeader1.Width = 123;
+            // 
+            // columnHeader2
+            // 
+            this.columnHeader2.Text = "Giá";
+            this.columnHeader2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.columnHeader2.Width = 68;
+            // 
+            // columnHeader3
+            // 
+            this.columnHeader3.Text = "Số Lượng";
+            this.columnHeader3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.columnHeader3.Width = 70;
+            // 
+            // columnHeader4
+            // 
+            this.columnHeader4.Text = "Số Tiền";
+            this.columnHeader4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.columnHeader4.Width = 75;
+            // 
             // panel3
             // 
             this.panel3.Location = new System.Drawing.Point(19, 416);
@@ -146,6 +169,17 @@
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(347, 89);
             this.panel4.TabIndex = 3;
+            // 
+            // tbResult
+            // 
+            this.tbResult.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbResult.Location = new System.Drawing.Point(215, 16);
+            this.tbResult.Name = "tbResult";
+            this.tbResult.ReadOnly = true;
+            this.tbResult.Size = new System.Drawing.Size(129, 26);
+            this.tbResult.TabIndex = 8;
+            this.tbResult.Text = "0000";
+            this.tbResult.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // cbSwitchTable
             // 
@@ -227,6 +261,7 @@
             this.btnThemMon.TabIndex = 2;
             this.btnThemMon.Text = "Thêm Món";
             this.btnThemMon.UseVisualStyleBackColor = true;
+            this.btnThemMon.Click += new System.EventHandler(this.btnThemMon_Click);
             // 
             // cbFood
             // 
@@ -238,11 +273,15 @@
             // 
             // cbCategory
             // 
+            this.cbCategory.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cbCategory.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cbCategory.FormattingEnabled = true;
             this.cbCategory.Location = new System.Drawing.Point(0, 3);
             this.cbCategory.Name = "cbCategory";
             this.cbCategory.Size = new System.Drawing.Size(209, 21);
             this.cbCategory.TabIndex = 0;
+            this.cbCategory.SelectedIndexChanged += new System.EventHandler(this.cbCategory_SelectedIndexChanged);
+            this.cbCategory.SelectedValueChanged += new System.EventHandler(this.cbCategory_SelectedValueChanged);
             // 
             // flpTable
             // 
@@ -250,40 +289,6 @@
             this.flpTable.Name = "flpTable";
             this.flpTable.Size = new System.Drawing.Size(509, 464);
             this.flpTable.TabIndex = 5;
-            // 
-            // columnHeader1
-            // 
-            this.columnHeader1.Text = "Tên Thức Ăn";
-            this.columnHeader1.Width = 123;
-            // 
-            // columnHeader2
-            // 
-            this.columnHeader2.Text = "Giá";
-            this.columnHeader2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.columnHeader2.Width = 68;
-            // 
-            // columnHeader3
-            // 
-            this.columnHeader3.Text = "Số Lượng";
-            this.columnHeader3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.columnHeader3.Width = 70;
-            // 
-            // columnHeader4
-            // 
-            this.columnHeader4.Text = "Số Tiền";
-            this.columnHeader4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.columnHeader4.Width = 75;
-            // 
-            // tbResult
-            // 
-            this.tbResult.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbResult.Location = new System.Drawing.Point(215, 16);
-            this.tbResult.Name = "tbResult";
-            this.tbResult.ReadOnly = true;
-            this.tbResult.Size = new System.Drawing.Size(129, 26);
-            this.tbResult.TabIndex = 8;
-            this.tbResult.Text = "0000";
-            this.tbResult.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // fTableManger
             // 

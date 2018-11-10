@@ -55,8 +55,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DAO\AddFoodDAO.cs" />
+    <Compile Include="DAO\AddTableDAO.cs" />
+    <Compile Include="DAO\FindFoodIdDAO.cs" />
     <Compile Include="DAO\LoadCategoryDAO.cs" />
+    <Compile Include="DAO\LoadFoodOfCategoryDAO.cs" />
     <Compile Include="DAO\LoadFoodsDAO.cs" />
+    <Compile Include="DAO\LoadTableAdminDAO.cs" />
     <Compile Include="DAO\LoadTableDAO.cs" />
     <Compile Include="DAO\LoginDAO.cs" />
     <Compile Include="DAO\ProcedureDAO.cs" />

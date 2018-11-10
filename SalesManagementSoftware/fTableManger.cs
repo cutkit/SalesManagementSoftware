@@ -22,7 +22,9 @@ namespace SalesManagementSoftware
             InitializeComponent();
             LoadTable();
             LoadCategory();
+           
         }
+    
         void LoadCategory()
         {
             List<FoodCategory> fc = LoadCategoryDAO.Instance.LoadCategory();
@@ -46,16 +48,19 @@ namespace SalesManagementSoftware
                 flpTable.Controls.Add(btn);
             }
         }
-
+        private float idBill = 0.77f;
+        private int idTable = 0;
         private void Btn_Click(object sender, EventArgs e)
         {
             double result = 0;
             lsvBill.Items.Clear();
             Button button = sender as Button;
             TableCustomer table = button.Tag as TableCustomer;
+            idTable = table.Id;
             List<FoodShowDTO> foods = LoadFoodsDAO.Instance.LoadFoods(table.Id);
             foreach (var item in foods)
             {
+                idBill = item.Id;
                 ListViewItem lisviewItems = lsvBill.Items.Add(item.FoodName.ToString());
                 lisviewItems.SubItems.Add(item.PriceFood.ToString());
                 lisviewItems.SubItems.Add(item.CountFood.ToString());
@@ -86,6 +91,58 @@ namespace SalesManagementSoftware
         private void lsvBill_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void cbCategory_SelectedIndexChanged(object sender, EventArgs e)
+        {
+          
+        }
+
+        private void cbCategory_SelectedValueChanged(object sender, EventArgs e)
+        {
+            string fc = cbCategory.SelectedItem.ToString();
+
+            if (fc != null)
+            {
+                cbFood.Items.Clear();
+                List<Food> foods = LoadFoodOfCategoryDAO.Instance.LoadFoods(fc);
+                foreach (var item in foods)
+                {
+                    cbFood.Items.Add(item.FoodName);
+                }
+            }
+        }
+
+        private void btnThemMon_Click(object sender, EventArgs e)   
+        {
+            int count = (int)nmFoodCount.Value;
+            int idFood = FindFoodIdDAO.Instance.FindFood(cbFood.SelectedItem.ToString());
+            if (idBill != 0.77f)
+            {
+                
+                if (AddFoodDAO.Instance.AddFood((int)idBill, idFood, count))
+                {
+                    MessageBox.Show("Thêm Thành Công!!");
+                }
+                else
+                {
+                    MessageBox.Show("Không Thêm Được!!");
+                }
+            }
+            lsvBill.Items.Clear();
+            double result = 0;
+            List<FoodShowDTO> foods = LoadFoodsDAO.Instance.LoadFoods(idTable);
+            foreach (var item in foods)
+            {
+                idBill = item.Id;
+                ListViewItem lisviewItems = lsvBill.Items.Add(item.FoodName.ToString());
+                lisviewItems.SubItems.Add(item.PriceFood.ToString());
+                lisviewItems.SubItems.Add(item.CountFood.ToString());
+                lisviewItems.SubItems.Add((item.CountFood * item.PriceFood).ToString());
+                result += item.CountFood * item.PriceFood;
+            }
+            CultureInfo info = CultureInfo.GetCultureInfo("vi-VN");
+            tbResult.Text = result.ToString("#,###", info.NumberFormat) + " Đ";
         }
     }
 }

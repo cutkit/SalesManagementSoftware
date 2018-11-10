@@ -1,4 +1,5 @@
 ﻿using SalesManagementSoftware.DAO;
+using SalesManagementSoftware.EntityFW;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -17,8 +18,13 @@ namespace SalesManagementSoftware
         {
             InitializeComponent();
             LoadUser();
+            LoadTable();
         }
-
+        void LoadTable()
+        {
+            List<TableCustomer> tc = LoadTableAdminDAO.Instance.LoadTableAdmin();
+            dgvTable.DataSource = tc;
+        }
         void LoadUser()
         {
             string query = "UP_GetAccountByUserName @UserName";
@@ -206,6 +212,11 @@ namespace SalesManagementSoftware
         }
 
         private void panel15_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void bntAddTable_Click(object sender, EventArgs e)
         {
 
         }

@@ -57,6 +57,8 @@
   <ItemGroup>
     <Compile Include="DAO\AddFoodDAO.cs" />
     <Compile Include="DAO\AddTableDAO.cs" />
+    <Compile Include="DAO\CreateBillDAO.cs" />
+    <Compile Include="DAO\FindBillWithStatusDAO.cs" />
     <Compile Include="DAO\FindFoodIdDAO.cs" />
     <Compile Include="DAO\LoadCategoryDAO.cs" />
     <Compile Include="DAO\LoadFoodOfCategoryDAO.cs" />

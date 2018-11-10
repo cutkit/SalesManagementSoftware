@@ -16,15 +16,15 @@ namespace SalesManagementSoftware
 {
     public partial class fTableManger : Form
     {
-       
+
         public fTableManger()
         {
             InitializeComponent();
             LoadTable();
             LoadCategory();
-           
+
         }
-    
+
         void LoadCategory()
         {
             List<FoodCategory> fc = LoadCategoryDAO.Instance.LoadCategory();
@@ -32,11 +32,11 @@ namespace SalesManagementSoftware
             {
                 cbCategory.Items.Add(item.NameCategory);
             }
-                
+
         }
         void LoadTable()
         {
-            List<TableCustomer> table= LoadTableDAO.Instance.GetTable();
+            List<TableCustomer> table = LoadTableDAO.Instance.GetTable();
             foreach (TableCustomer item in table)
             {
                 Button btn = new Button();
@@ -52,12 +52,26 @@ namespace SalesManagementSoftware
         private int idTable = 0;
         private void Btn_Click(object sender, EventArgs e)
         {
+
             double result = 0;
             lsvBill.Items.Clear();
             Button button = sender as Button;
             TableCustomer table = button.Tag as TableCustomer;
             idTable = table.Id;
             List<FoodShowDTO> foods = LoadFoodsDAO.Instance.LoadFoods(table.Id);
+            List<Bill> bills = FindBillWithStatusDAO.Instance.FindBillWithStatus(idTable);
+
+            if (bills.Count == 0)
+            {
+                CreateBillDAO.Instance.CreateBill(table.Id);
+                List<Bill> bills2 = FindBillWithStatusDAO.Instance.FindBillWithStatus(idTable);
+                MessageBox.Show("Bàn Trống!!");
+                foreach (var item in bills2)
+                {
+                    idBill = item.Id;
+                }
+            }
+          
             foreach (var item in foods)
             {
                 idBill = item.Id;
@@ -68,7 +82,9 @@ namespace SalesManagementSoftware
                 result += item.CountFood * item.PriceFood;
             }
             CultureInfo info = CultureInfo.GetCultureInfo("vi-VN");
-            tbResult.Text = result.ToString("#,###",info.NumberFormat) + " Đ";
+            tbResult.Text = result.ToString("#,###", info.NumberFormat) + " Đ";
+
+
         }
 
         private void thôngTinTàiKhoảnToolStripMenuItem_Click(object sender, EventArgs e)
@@ -95,7 +111,7 @@ namespace SalesManagementSoftware
 
         private void cbCategory_SelectedIndexChanged(object sender, EventArgs e)
         {
-          
+
         }
 
         private void cbCategory_SelectedValueChanged(object sender, EventArgs e)
@@ -113,36 +129,43 @@ namespace SalesManagementSoftware
             }
         }
 
-        private void btnThemMon_Click(object sender, EventArgs e)   
+        private void btnThemMon_Click(object sender, EventArgs e)
         {
-            int count = (int)nmFoodCount.Value;
-            int idFood = FindFoodIdDAO.Instance.FindFood(cbFood.SelectedItem.ToString());
-            if (idBill != 0.77f)
+            if (cbFood.SelectedItem != null)
             {
-                
-                if (AddFoodDAO.Instance.AddFood(idTable,(int)idBill, idFood, count))
+                int count = (int)nmFoodCount.Value;
+                int idFood = FindFoodIdDAO.Instance.FindFood(cbFood.SelectedItem.ToString());
+                if (idBill != 0.77f)
                 {
-                    MessageBox.Show("Thêm Thành Công!!");
+
+                    if (AddFoodDAO.Instance.AddFood(idTable, (int)idBill, idFood, count))
+                    {
+                        MessageBox.Show("Thêm Thành Công!!");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Không Thêm Được!!");
+                    }
                 }
-                else
+                lsvBill.Items.Clear();
+                double result = 0;
+                List<FoodShowDTO> foods = LoadFoodsDAO.Instance.LoadFoods(idTable);
+                foreach (var item in foods)
                 {
-                    MessageBox.Show("Không Thêm Được!!");
+                    idBill = item.Id;
+                    ListViewItem lisviewItems = lsvBill.Items.Add(item.FoodName.ToString());
+                    lisviewItems.SubItems.Add(item.PriceFood.ToString());
+                    lisviewItems.SubItems.Add(item.CountFood.ToString());
+                    lisviewItems.SubItems.Add((item.CountFood * item.PriceFood).ToString());
+                    result += item.CountFood * item.PriceFood;
                 }
+                CultureInfo info = CultureInfo.GetCultureInfo("vi-VN");
+                tbResult.Text = result.ToString("#,###", info.NumberFormat) + " Đ";
             }
-            lsvBill.Items.Clear();
-            double result = 0;
-            List<FoodShowDTO> foods = LoadFoodsDAO.Instance.LoadFoods(idTable);
-            foreach (var item in foods)
+            else
             {
-                idBill = item.Id;
-                ListViewItem lisviewItems = lsvBill.Items.Add(item.FoodName.ToString());
-                lisviewItems.SubItems.Add(item.PriceFood.ToString());
-                lisviewItems.SubItems.Add(item.CountFood.ToString());
-                lisviewItems.SubItems.Add((item.CountFood * item.PriceFood).ToString());
-                result += item.CountFood * item.PriceFood;
+                MessageBox.Show("Xin Chọn Thức Ăn");
             }
-            CultureInfo info = CultureInfo.GetCultureInfo("vi-VN");
-            tbResult.Text = result.ToString("#,###", info.NumberFormat) + " Đ";
         }
     }
 }

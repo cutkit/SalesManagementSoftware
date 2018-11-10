@@ -39,12 +39,24 @@ namespace SalesManagementSoftware
             List<TableCustomer> table = LoadTableDAO.Instance.GetTable();
             foreach (TableCustomer item in table)
             {
+                if (item.StatusInfo =="Trống")
+                {
+
+                }
                 Button btn = new Button();
                 btn.Height = 90;
                 btn.Width = 90;
                 btn.Text = item.NameTable + "\n" + item.StatusInfo;
                 btn.Tag = item;
                 btn.Click += Btn_Click;
+                if (item.StatusInfo == "Trống")
+                {
+                    btn.BackColor = Color.Azure;
+                }
+                else
+                {
+                    btn.BackColor = Color.BlueViolet;
+                }
                 flpTable.Controls.Add(btn);
             }
         }
@@ -58,6 +70,7 @@ namespace SalesManagementSoftware
             Button button = sender as Button;
             TableCustomer table = button.Tag as TableCustomer;
             idTable = table.Id;
+            lbCurrentTable.Text = table.NameTable.ToString();
             List<FoodShowDTO> foods = LoadFoodsDAO.Instance.LoadFoods(table.Id);
             List<Bill> bills = FindBillWithStatusDAO.Instance.FindBillWithStatus(idTable);
 

@@ -53,6 +53,7 @@
             this.cbFood = new System.Windows.Forms.ComboBox();
             this.cbCategory = new System.Windows.Forms.ComboBox();
             this.flpTable = new System.Windows.Forms.FlowLayoutPanel();
+            this.lbCurrentTable = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -290,11 +291,22 @@
             this.flpTable.Size = new System.Drawing.Size(509, 464);
             this.flpTable.TabIndex = 5;
             // 
+            // lbCurrentTable
+            // 
+            this.lbCurrentTable.AutoSize = true;
+            this.lbCurrentTable.Font = new System.Drawing.Font("Consolas", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbCurrentTable.Location = new System.Drawing.Point(316, 3);
+            this.lbCurrentTable.Name = "lbCurrentTable";
+            this.lbCurrentTable.Size = new System.Drawing.Size(40, 22);
+            this.lbCurrentTable.TabIndex = 6;
+            this.lbCurrentTable.Text = "Bàn";
+            // 
             // fTableManger
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(896, 507);
+            this.Controls.Add(this.lbCurrentTable);
             this.Controls.Add(this.flpTable);
             this.Controls.Add(this.panel5);
             this.Controls.Add(this.panel4);
@@ -344,5 +356,6 @@
         private System.Windows.Forms.ColumnHeader columnHeader3;
         private System.Windows.Forms.ColumnHeader columnHeader4;
         private System.Windows.Forms.TextBox tbResult;
+        private System.Windows.Forms.Label lbCurrentTable;
     }
 }

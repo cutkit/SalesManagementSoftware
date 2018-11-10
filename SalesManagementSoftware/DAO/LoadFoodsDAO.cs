@@ -1,4 +1,5 @@
-﻿using SalesManagementSoftware.EntityFW;
+﻿using SalesManagementSoftware.DTO;
+using SalesManagementSoftware.EntityFW;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,12 +30,16 @@ namespace SalesManagementSoftware.DAO
 
         }
 
-        public List<Food> LoadFoods(int idTable)
+        public List<FoodShowDTO> LoadFoods(int idTable)
         {
-            List<Food> result= null;
+            
             var ls = from x in db.TableCustomers
-                     join y in db.Bills on x.Id equals  
-            return result;
+                     join y in db.Bills on x.Id equals y.idTable
+                     join z in db.BillInfoes on y.Id equals z.idBill
+                     join t in db.Foods on z.idFood equals t.Id
+                     where x.Id == idTable && y.StatusInfo == 1
+                     select   new FoodShowDTO() { FoodName = t.FoodName, PriceFood = t.PriceFood, CountFood = z.CountFood } ;
+                     return ls.ToList<FoodShowDTO>();
         }
     }
 }

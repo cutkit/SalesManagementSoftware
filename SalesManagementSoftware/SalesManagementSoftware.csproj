@@ -55,10 +55,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DAO\LoadCategoryDAO.cs" />
     <Compile Include="DAO\LoadFoodsDAO.cs" />
     <Compile Include="DAO\LoadTableDAO.cs" />
     <Compile Include="DAO\LoginDAO.cs" />
     <Compile Include="DAO\ProcedureDAO.cs" />
+    <Compile Include="DTO\FoodShowDTO.cs" />
     <Compile Include="EntityFW\Account.cs" />
     <Compile Include="EntityFW\Bill.cs" />
     <Compile Include="EntityFW\BillInfo.cs" />
@@ -127,8 +129,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="DTO\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
